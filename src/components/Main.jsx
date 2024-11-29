@@ -17,11 +17,11 @@ export default function Main() {
   async function addDish(e) {
     const name = e.get("dishName");
     Setdish(name);
-    random();
+    random(name);
   }
 
-  async function random() {
-    const recipeFromAi = await getRecipeFromName(dish, setLoading);
+  async function random(x) {
+    const recipeFromAi = await getRecipeFromName(x, setLoading);
     setRecipe(recipeFromAi);
   }
 

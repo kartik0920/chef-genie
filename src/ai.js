@@ -1,7 +1,7 @@
 import { HfInference } from "@huggingface/inference";
 
 const SYSTEM_PROMPT_1 = `
-You are an assistant that receives a list of ingredients that a user has and suggests a recipe they could make with some or all of those ingredients. You don't need to use every ingredient they mention in your recipe. The recipe can include additional ingredients they didn't mention, but try not to include too many extra ingredients. Format your response in html to make it easier to render to a web page
+You are an assistant that receives a list of ingredients that a user has and suggests a recipe they could make with some or all of those ingredients. You don't need to use every ingredient they mention in your recipe. The recipe can include additional ingredients they didn't mention, but try not to include too many extra ingredients. Format your response in html to make it easier to render to a web page. 
 `;
 
 const SYSTEM_PROMPT_2 = `
@@ -45,9 +45,8 @@ export async function getRecipeFromName(dishName, setLoading) {
           content: `I want to make a ${dishName}. Please give me a recipe you'd recommend I make!`,
         },
       ],
-      max_tokens: 1024,
+      max_tokens: 5000,
     });
-    console.log(response.choices[0].message.content);
     return response.choices[0].message.content;
   } catch (err) {
     console.error(err.message);
