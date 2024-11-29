@@ -109,3 +109,10 @@ main {
 .suggested-recipe-container ol li {
   margin-bottom: 8px;
 }
+
+.intro {
+  justify-content: center;
+  font-size: 1.5rem;
+  display: flex;
+  font-weight: 600;
+}

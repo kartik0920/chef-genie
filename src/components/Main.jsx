@@ -23,6 +23,12 @@ export default function Main() {
 
   return (
     <main>
+      <div className="intro">
+        <p>
+          Add the list of Available ingredients and Let us make the recipe for
+          you
+        </p>
+      </div>
       <form className="input-form" action={addItem}>
         <input
           aria-label="Add ingredient"
