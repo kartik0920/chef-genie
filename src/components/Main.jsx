@@ -18,7 +18,7 @@ export default function Main() {
     const name = e.get("dishName");
     Setdish(name);
     const recipeFromAi = await getRecipeFromName(name, setLoading);
-    setRecipe(recipeFromAi);
+    // setRecipe(recipeFromAi);
   }
 
   const ingredientsListItems = ingredients.map((ingredient) => (

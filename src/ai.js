@@ -49,7 +49,6 @@ export async function getRecipeFromName(dishName, setLoading) {
     return response.choices[0].message.content;
   } catch (err) {
     console.error(err.message);
-  } finally {
-    setLoading(false);
   }
+  setLoading(false);
 }
