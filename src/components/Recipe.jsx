@@ -7,6 +7,7 @@ export default function Recipe(props) {
     <div
       dangerouslySetInnerHTML={{ __html: props.recipe }}
       className="suggested-recipe-container"
+      ref={props.ref}
     />
   );
 }

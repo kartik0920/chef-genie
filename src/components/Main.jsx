@@ -8,6 +8,17 @@ export default function Main() {
   const [recipe, setRecipe] = React.useState("");
   const [dish, Setdish] = React.useState("");
   const [loading, setLoading] = React.useState(false);
+  const recipeSection = React.useRef(null);
+
+  React.useEffect(() => {
+    if (recipe.lenght !== "" && recipeSection.current !== null) {
+      recipeSection.current.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+        inline: "nearest",
+      });
+    }
+  }, [recipe]);
 
   function addItem(event) {
     const item = event.get("list-ingredient");
@@ -93,7 +104,8 @@ export default function Main() {
       </section>
 
       {loading && <div className="spinner" />}
-      {recipe && <Recipe recipe={recipe} />}
+
+      {recipe && <Recipe recipe={recipe} ref={recipeSection} />}
 
       <style>{`
         .spinner {
