@@ -9,7 +9,8 @@ You are an assistant that receives a name of dish from a user and suggests a rec
 `;
 
 const hf = new HfInference(import.meta.env.VITE_HF_ACCESS_TOKEN);
-export async function getRecipeFromMistral(ingredientsArr) {
+export async function getRecipeFromMistral(ingredientsArr, setLoading) {
+  setLoading(true);
   const ingredientsString = ingredientsArr.join(", ");
   try {
     const response = await hf.chatCompletion({
@@ -26,10 +27,13 @@ export async function getRecipeFromMistral(ingredientsArr) {
     return response.choices[0].message.content;
   } catch (err) {
     console.error(err.message);
+  } finally {
+    setLoading(false);
   }
 }
 
-export async function getRecipeFromName(dishName) {
+export async function getRecipeFromName(dishName, setLoading) {
+  setLoading(true);
   try {
     const response = await hf.chatCompletion({
       model: "mistralai/Mixtral-8x7B-Instruct-v0.1",
@@ -45,5 +49,7 @@ export async function getRecipeFromName(dishName) {
     return response.choices[0].message.content;
   } catch (err) {
     console.error(err.message);
+  } finally {
+    setLoading(false);
   }
 }
