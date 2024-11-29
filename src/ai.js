@@ -10,7 +10,7 @@ You are an assistant that receives a name of dish from a user and suggests a rec
 
 const hf = new HfInference(import.meta.env.VITE_HF_ACCESS_TOKEN);
 export async function getRecipeFromMistral(ingredientsArr, setLoading) {
-  setLoading(true);
+  setLoading((x) => !x);
   const ingredientsString = ingredientsArr.join(", ");
   try {
     const response = await hf.chatCompletion({
@@ -28,12 +28,13 @@ export async function getRecipeFromMistral(ingredientsArr, setLoading) {
   } catch (err) {
     console.error(err.message);
   } finally {
-    setLoading(false);
+    setLoading((x) => !x);
   }
 }
 
 export async function getRecipeFromName(dishName, setLoading) {
-  setLoading(true);
+  setLoading((x) => !x);
+
   try {
     const response = await hf.chatCompletion({
       model: "mistralai/Mixtral-8x7B-Instruct-v0.1",
@@ -46,9 +47,13 @@ export async function getRecipeFromName(dishName, setLoading) {
       ],
       max_tokens: 1024,
     });
+    console.log(response.choices[0].message.content);
     return response.choices[0].message.content;
   } catch (err) {
     console.error(err.message);
+  } finally {
+    setLoading((x) => !x);
   }
-  setLoading(false);
+
+  // setLoading(true);
 }

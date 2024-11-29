@@ -6,7 +6,7 @@ import { getRecipeFromMistral, getRecipeFromName } from "../ai";
 export default function Main() {
   const [ingredients, setIngredients] = React.useState([]);
   const [recipe, setRecipe] = React.useState("");
-  const [dish, Setdish] = React.useState(null);
+  const [dish, Setdish] = React.useState("");
   const [loading, setLoading] = React.useState(false);
 
   function addItem(event) {
@@ -17,8 +17,12 @@ export default function Main() {
   async function addDish(e) {
     const name = e.get("dishName");
     Setdish(name);
-    const recipeFromAi = await getRecipeFromName(name, setLoading);
-    // setRecipe(recipeFromAi);
+    random();
+  }
+
+  async function random() {
+    const recipeFromAi = await getRecipeFromName(dish, setLoading);
+    setRecipe(recipeFromAi);
   }
 
   const ingredientsListItems = ingredients.map((ingredient) => (
@@ -39,7 +43,7 @@ export default function Main() {
         </p>
       </div>
 
-      {dish === null && (
+      {dish.length === 0 && (
         <section className="fromIngredient">
           <form className="input-form" action={addItem}>
             <input
@@ -67,7 +71,7 @@ export default function Main() {
       <section className="fromDish">
         {ingredients.length === 0 && (
           <section>
-            {dish === null && (
+            {dish.length === 0 && (
               <div className="intro">
                 <h3>OR</h3>
               </div>
