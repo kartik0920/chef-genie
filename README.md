@@ -9,6 +9,8 @@ Welcome to **Chef Genie**, a web app designed to help you discover recipes in tw
 
 Chef Genie aims to be the ultimate kitchen assistant, empowering users to create delicious meals effortlessly based on available ingredients or specific dishes they wish to prepare.
 
+
+
 ---
 
 ## Features
