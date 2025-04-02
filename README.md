@@ -5,7 +5,7 @@
 Welcome to **Chef Genie**, a web app designed to help you discover recipes in two simple ways:
 
 1. **By Ingredients**: Provide a list of ingredients, and Chef Genie will find recipes that you can make with what you have.
-2. **By Dish Name**: Just type the name of a dish, and Chef Genie will suggest a recipe for it.
+2. **By Dish Name**: Just types the name of a dish, and Chef Genie will suggest a recipe for it.
 
 Chef Genie aims to be the ultimate kitchen assistant, empowering users to create delicious meals effortlessly based on available ingredients or specific dishes they wish to prepare.
 
